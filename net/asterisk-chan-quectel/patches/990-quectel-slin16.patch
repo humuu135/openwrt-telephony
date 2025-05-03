@@ -1,0 +1,13 @@
+Index: asterisk-chan-quectel-master/src/chan_quectel.c
+===================================================================
+--- asterisk-chan-quectel-master.orig/src/chan_quectel.c
++++ asterisk-chan-quectel-master/src/chan_quectel.c
+@@ -1354,7 +1354,7 @@ const struct ast_format* pvt_get_audio_f
+                 return ast_format_slin48;
+ 
+             default:
+-                return ast_format_slin;
++                return CONF_UNIQ(pvt, slin16) ? ast_format_slin16 : ast_format_slin;
+         }
+     }
+ }
