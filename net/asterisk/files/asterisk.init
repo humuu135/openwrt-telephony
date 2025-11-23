@@ -54,6 +54,7 @@ start_service() {
     -U "$NAME" \
     $options \
     -f
+  procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
   # forward stderr to logd
   procd_set_param stderr $log_stderr
   # same for stdout
