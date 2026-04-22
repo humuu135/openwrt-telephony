@@ -1,0 +1,13 @@
+Index: asterisk-chan-quectel-2024.06.15/src/msg_tech.c
+===================================================================
+--- asterisk-chan-quectel-2024.06.15.orig/src/msg_tech.c
++++ asterisk-chan-quectel-2024.06.15/src/msg_tech.c
+@@ -71,7 +71,7 @@ static int msg_send(const struct ast_msg
+     char* dest = ast_strdupa(to);
+     strsep(&dest, ":");
+ 
+-    if (ast_msg_has_destination(msg)) {
++    if (!ast_msg_has_destination(msg)) {
+         ast_log(LOG_ERROR, "Destination number not specified\n");
+         return -1;
+     }
